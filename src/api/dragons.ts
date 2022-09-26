@@ -1,3 +1,4 @@
+import { Params } from 'react-router-dom';
 import { Dragon } from '../types';
 import { client } from './client'
 
