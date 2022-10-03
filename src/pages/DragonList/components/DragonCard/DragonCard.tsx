@@ -20,7 +20,12 @@ export const DragonCard: React.FC<DragonCardPrors> = ({ data }) => {
   const { flickr_images, name, id } = data;
   return (
     <Fade in timeout={1000}>
-      <Card sx={{ width: 500, mb: 2 }}>
+      <Card
+        sx={{
+          width: { xs: "100%", md: "100%", sm: "100%", lg: "40%", xl: 700 },
+          m: 1,
+        }}
+      >
         <CardActionArea component={Link} to={`${id}`}>
           <CardMedia
             height="200"

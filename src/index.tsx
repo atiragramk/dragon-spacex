@@ -1,10 +1,11 @@
 import ReactDOM from "react-dom/client";
-import "./index.css";
+
 import App from "./App";
 import store from "./store";
 import { Provider } from "react-redux";
 import { GlobalStyle } from "./styled";
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material";
+import "react-toastify/dist/ReactToastify.css";
 
 const theme = createTheme({
   typography: {
@@ -17,32 +18,27 @@ const theme = createTheme({
     h1: {
       fontSize: "50px",
       fontWeight: 500,
-      "@media (min-width:500px)": {
+      "@media (min-width:600px)": {
         fontSize: "120px",
       },
-      "@media (min-width:800px)": {
+      "@media (min-width:900px)": {
         fontSize: "200px",
       },
+    },
+    h4: {
+      fontWeight: 500,
     },
   },
   palette: {
     primary: {
-      main: "#9575CD",
+      main: "#FAFAFA",
       light: "#7986CB",
     },
     secondary: {
-      main: "#e8eaf6",
-      light: "#9FA8DA",
-      dark: "#546E7A",
+      main: "#FFCC80",
     },
     info: {
-      main: "#5C6BC0",
-    },
-    priority: {
-      low: "#AED581",
-      normal: "#B0BEC5",
-      high: "#FFB74D",
-      critical: "#FF7043",
+      main: "#006064",
     },
   },
 } as ThemeOptions);

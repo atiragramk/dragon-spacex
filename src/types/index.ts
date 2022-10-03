@@ -73,3 +73,16 @@ export type Dragon = {
     description: string,
     id: string
 }
+
+
+export type FormData = {
+    email: string,
+    password: string,
+    confirmPassword: string
+}
+
+export type User = {
+    email: string | null,
+    accessToken?: string,
+    uid: string | null,
+}
