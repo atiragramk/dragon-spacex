@@ -4,7 +4,7 @@ import axios from "axios";
 const { REACT_APP_API } = process.env;
 
 export const client = axios.create({
-    baseURL: ' https://api.spacexdata.com/v4/',
+    baseURL: REACT_APP_API,
 });
 
 
