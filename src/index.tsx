@@ -1,10 +1,15 @@
 import ReactDOM from "react-dom/client";
-
 import App from "./App";
-import store from "./store";
+import store, { persistor } from "./store";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import { GlobalStyle } from "./styled";
-import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material";
+import {
+  CircularProgress,
+  createTheme,
+  ThemeOptions,
+  ThemeProvider,
+} from "@mui/material";
 import "react-toastify/dist/ReactToastify.css";
 
 const theme = createTheme({
@@ -15,6 +20,7 @@ const theme = createTheme({
     fontWeightRegular: 300,
     fontWeightMedium: 500,
     fontWeightBold: 700,
+    color: "#006064",
     h1: {
       fontSize: "50px",
       fontWeight: 500,
@@ -40,6 +46,10 @@ const theme = createTheme({
     info: {
       main: "#006064",
     },
+    text: {
+      primary: "#000000de",
+      secondary: "#006064",
+    },
   },
 } as ThemeOptions);
 
@@ -51,7 +61,9 @@ root.render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <App />
+        <PersistGate loading={<CircularProgress />} persistor={persistor}>
+          <App />
+        </PersistGate>
       </ThemeProvider>
     </Provider>
   </>

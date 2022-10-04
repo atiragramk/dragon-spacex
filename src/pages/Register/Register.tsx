@@ -48,8 +48,7 @@ const Register = () => {
         toast.success("You was registered successfully");
       })
       .catch((error) => {
-        console.log(error.message);
-        toast.error(error.message);
+        toast.error(error.message.slice(9));
       });
   };
 

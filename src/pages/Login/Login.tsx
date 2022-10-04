@@ -47,12 +47,12 @@ const Login = () => {
     const { email, password } = values;
     signInWithEmailAndPassword(auth, email!, password!)
       .then((userCredential) => {
-        const { email, uid } = userCredential.user;
-        dispatch(authUserSetAction({ email, uid }));
+        dispatch(authUserSetAction(userCredential.user));
+        localStorage.setItem("user", JSON.stringify(userCredential.user));
         toast.success("You was login successfully");
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error(error.message.slice(9));
       });
   };
 

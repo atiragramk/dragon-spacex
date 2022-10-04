@@ -1,5 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Params } from "react-router-dom";
 import { getDragon } from "../../../api/dragons";
 
 

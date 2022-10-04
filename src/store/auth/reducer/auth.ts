@@ -1,17 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { User } from "../../../types";
+import { Dragon, User } from "../../../types";
 
-import { authUserSet } from "../actions/auth";
+import { authUserSet, favouriteDragonsAdd, favouriteDragonsRemove, authUserSignOut } from "../actions/auth";
 
 
 const AUTH_SLICE_NAME = "AUTH_SLICE_NAME";
 
 export type AuthState = {
     user: User | null;
+    dragons: Partial<Dragon>[] | []
 }
 
 const initialState: AuthState = {
-    user: null
+    user: null,
+    dragons: []
 }
 
 
@@ -19,11 +21,19 @@ const authSlice = createSlice({
     name: AUTH_SLICE_NAME,
     initialState,
     reducers: {
-        authUserSet
+        authUserSet,
+        favouriteDragonsAdd,
+        favouriteDragonsRemove,
+        authUserSignOut
     }
 })
 
-export const { authUserSet: authUserSetAction } = authSlice.actions
+export const {
+    authUserSet: authUserSetAction,
+    favouriteDragonsAdd: favouriteDragonsAddAction,
+    favouriteDragonsRemove: favouriteDragonsRemoveAction,
+    authUserSignOut: authUserSignOutAction
+} = authSlice.actions
 
 export default authSlice.reducer
 

@@ -7,26 +7,44 @@ import {
   Stack,
   IconButton,
   LinearProgress,
+  Tooltip,
 } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppDispatch } from "../../store";
+import LinkIcon from "@mui/icons-material/Link";
+import ReplyIcon from "@mui/icons-material/Reply";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
 import { dragonItemStateSelector } from "./selectors/dragonItem";
 import { dragonItemFetch } from "./thunk/dragonItem";
 import { StyledContainer } from "./styled";
-import LinkIcon from "@mui/icons-material/Link";
-import ReplyIcon from "@mui/icons-material/Reply";
 import moment from "moment";
 import { ImageCarousel } from "./components/ImageCarousel";
 import { ParamsItem } from "./components/ParamsItem";
+import {
+  favouriteDragonsAddAction,
+  favouriteDragonsRemoveAction,
+} from "../../store/auth/reducer/auth";
 import { authStateSelector } from "../../store/auth/selectors/auth";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const DragonItem = () => {
   const dispatch: AppDispatch = useDispatch();
   const { loading, error, data } = useSelector(dragonItemStateSelector);
-  const { user } = useSelector(authStateSelector);
+  const user = localStorage.getItem("user");
+  const { dragons } = useSelector(authStateSelector);
+
+  const fav = dragons.some((dragon) => dragon.id === data.id);
+
+  const handleFavSelection = () => {
+    if (fav) {
+      dispatch(favouriteDragonsRemoveAction(data));
+    } else {
+      dispatch(favouriteDragonsAddAction(data));
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -88,9 +106,13 @@ const DragonItem = () => {
                     <ReplyIcon />
                   </IconButton>
                   {user && (
-                    <IconButton color="info">
-                      <FavoriteBorderIcon />
-                    </IconButton>
+                    <Tooltip
+                      title={fav ? "Remove from favourite" : "Add to favourite"}
+                    >
+                      <IconButton color="info" onClick={handleFavSelection}>
+                        {fav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                      </IconButton>
+                    </Tooltip>
                   )}
                 </Box>
                 <Typography variant="h4">{name}</Typography>

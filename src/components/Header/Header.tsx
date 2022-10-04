@@ -9,11 +9,10 @@ import {
 import logo from "../../assets/img/logo.svg";
 import { Avatar, Button, IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { authStateSelector } from "../../store/auth/selectors/auth";
 
 export const Header = () => {
-  const { user } = useSelector(authStateSelector);
+  const user = localStorage.getItem("user");
+
   return (
     <StyledAppBar position="sticky">
       <StyledToolbar>

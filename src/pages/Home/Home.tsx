@@ -7,7 +7,20 @@ const Home = () => {
   return (
     <StyledContainer maxWidth="xl">
       <Fade in timeout={2000}>
-        <Typography variant="h1">SPACEx</Typography>
+        <Typography
+          sx={{
+            mt: {
+              xs: 18,
+              md: 18,
+              sm: 8,
+              lg: 8,
+              xl: 8,
+            },
+          }}
+          variant="h1"
+        >
+          SPACEx
+        </Typography>
       </Fade>
       <Slide direction="down" in timeout={1000}>
         <Button
