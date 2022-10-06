@@ -45,7 +45,7 @@ export const Header = () => {
             size="small"
             variant="outlined"
           >
-            Log in
+            Sign in
           </Button>
         )}
       </StyledToolbar>
