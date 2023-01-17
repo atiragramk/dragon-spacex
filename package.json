@@ -1,6 +1,7 @@
 {
   "name": "dragon-spacex",
   "version": "0.1.0",
+  "homepage": "https://atiragramk.github.io/dragon-spacex/",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
@@ -85,10 +86,10 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "serve -s build",
+    "dev": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": [

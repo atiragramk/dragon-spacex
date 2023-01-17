@@ -38,7 +38,7 @@ function App() {
 
   return (
     <>
-      <Router>
+      <Router basename="/dragon-spacex">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
